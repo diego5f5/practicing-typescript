@@ -1,7 +1,12 @@
 import { Request, Response } from "express";
 import EmailService from "../services/EmailService";
 
-const users = [{ name: "Diego", email: "diegoferreira777@hotmail.com" }];
+const users = [
+  { name: "Diego", email: "diegoferreira777@hotmail.com" },
+  { name: "Test0", email: "Test0@hotmail.com" },
+  { name: "Test1", email: "Test1@hotmail.com" },
+  { name: "Test2", email: "Test2@hotmail.com" },
+];
 
 export default {
   async index(req: Request, res: Response) {

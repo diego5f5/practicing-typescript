@@ -1,0 +1,12 @@
+.item {
+  width: 300px;
+  border: solid 1px rgb(92, 91, 91);
+  border-radius: 5px;
+  margin-bottom: 5px;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 5px;
+  color: rgb(17, 17, 17);
+}

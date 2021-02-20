@@ -1,24 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useEffect, useState} from 'react';
+import api from './services/api'
+
+// Components
+import User from './components/User'
+import MainContainer from './components/MainContainer'
+
+interface IUser {
+  name: string;
+  email: string;
+}
 
 function App() {
+
+  const [users, setUsers] = useState<IUser[]>([])
+
+  useEffect(()=> {
+    api.get<IUser[]>('/users').then(response=> {
+      setUsers(response.data)
+    })
+  },[])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <MainContainer>
+      {users.length > 0 ? users.map((user, index)=> (
+        <User key={index} user={user}/>
+      )) : <p>No data! (make sure the backend is running)</p>}
+      </MainContainer>
     </div>
   );
 }
